@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: kongos-restaurant
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BREVO_API_KEY
+        sync: false
+      - key: SENDER_EMAIL
+        sync: false
+      - key: RECIPIENT_EMAIL
+        value: nexgenfec@gmail.com

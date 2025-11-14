@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KONGO'S Restaurant - Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  margin:0;
+  background:#111;
+  color:#fff;
+  font-family:'Roboto',sans-serif;
+  animation:fadeIn 0.6s ease-out;
+}
+a{text-decoration:none;color:inherit;}
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#000;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:2px solid #222;
+}
+header .logo-wrap{display:flex;align-items:center;gap:10px;}
+header img.logo{height:58px;border-radius:999px;}
+header .site-title{font-family:'Permanent Marker',cursive;font-size:22px;}
+nav.main-nav{display:flex;gap:20px;align-items:center;}
+nav.main-nav a{font-family:'Permanent Marker',cursive;font-size:16px;}
+nav.main-nav a:hover{text-shadow:1px 1px 3px #000;}
+.info-bar{
+  background:#000;
+  text-align:center;
+  padding:12px 14px;
+  font-size:16px;
+  font-weight:600;
+  border-bottom:2px solid #222;
+}
+.hero{
+  min-height:60vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px 20px;
+}
+.hero-logo{
+  max-width:240px;
+  width:60vw;
+  border-radius:999px;
+  box-shadow:0 0 25px rgba(0,0,0,0.8);
+}
+.hero h1{
+  font-family:'Permanent Marker',cursive;
+  font-size:38px;
+  margin:22px 0 8px;
+}
+.hero p{
+  font-size:17px;
+  color:#ddd;
+  max-width:640px;
+  margin:0 auto 18px;
+}
+.btn-main{
+  display:inline-block;
+  padding:11px 30px;
+  border-radius:40px;
+  background:#fff;
+  color:#000;
+  font-family:'Permanent Marker',cursive;
+  font-size:20px;
+  margin-top:10px;
+  transition:transform .15s, box-shadow .15s, background .15s;
+}
+.btn-main:hover{
+  background:#f4f4f4;
+  box-shadow:0 4px 10px rgba(0,0,0,0.5);
+  transform:translateY(-1px);
+}
+.btn-secondary{
+  background:#ffd700;
+}
+.section{
+  max-width:1100px;
+  margin:0 auto;
+  padding:35px 20px 10px;
+}
+.section h2{
+  font-family:'Permanent Marker',cursive;
+  font-size:30px;
+  margin-bottom:18px;
+  text-align:center;
+}
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.feature-card{
+  background:#181818;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,0.6);
+}
+.feature-card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+.feature-card .content{
+  padding:14px 18px;
+  font-size:14px;
+  color:#ddd;
+}
+.about-text{
+  text-align:center;
+  max-width:780px;
+  margin:0 auto;
+  font-size:16px;
+  color:#ddd;
+  line-height:1.6;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.gallery-grid img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 3px 10px rgba(0,0,0,0.6);
+}
+.gallery-grid img:hover{
+  transform:scale(1.06);
+  box-shadow:0 4px 14px rgba(0,0,0,0.7);
+}
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:40;
+}
+.lightbox img{
+  max-width:92%;
+  max-height:92%;
+  border-radius:12px;
+}
+.menu-image{
+  width:100%;
+  max-width:900px;
+  margin:20px auto;
+  border-radius:12px;
+  display:block;
+  box-shadow:0 4px 18px rgba(0,0,0,0.7);
+}
+.menu-note{
+  text-align:center;
+  font-size:15px;
+  color:#ccc;
+}
+form{
+  max-width:600px;
+  margin:0 auto;
+  margin-top:15px;
+}
+label{
+  display:block;
+  margin-top:14px;
+  margin-bottom:4px;
+  font-weight:500;
+}
+input,textarea,select{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #555;
+  background:#1b1b1b;
+  color:#fff;
+  font-size:15px;
+}
+button.submit-btn{
+  margin-top:20px;
+  padding:11px 32px;
+  border:none;
+  border-radius:40px;
+  background:#fff;
+  color:#000;
+  font-family:'Permanent Marker',cursive;
+  font-size:18px;
+  cursor:pointer;
+}
+button.submit-btn:hover{
+  background:#f4f4f4;
+}
+footer{
+  text-align:center;
+  padding:18px 12px 26px;
+  background:#000;
+  border-top:2px solid #222;
+  color:#999;
+  font-size:13px;
+  margin-top:40px;
+}
+
+/* Mobile nav (hamburger) */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+@media(max-width:780px){
+  nav.main-nav{
+    display:none;
+    position:absolute;
+    top:58px;
+    right:10px;
+    background:#000;
+    padding:12px 18px;
+    flex-direction:column;
+    gap:10px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.7);
+  }
+  nav.main-nav.show{
+    display:flex;
+  }
+  .menu-toggle{
+    display:block;
+  }
+}
+
+/* Page transition */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+
+.book-online-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 90px;
+    height: 90px;
+    background: #ffd700;
+    color: #000;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 9999;
+    transition: 0.2s ease;
+}
+.book-online-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+    background: #ffea55;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="KONGO'S Restaurant" class="logo">
+    <div class="site-title">KONGO'S Restaurant</div>
+  </div>
+  <div class="menu-toggle" onclick="document.querySelector('nav.main-nav').classList.toggle('show')">☰</div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="reservations.html">Reservations</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<div class="info-bar">
+  KONGO'S Restaurant • 1608 Park Avenue (Beside NeXgen Family Entertainment) • Brandon, Manitoba • R7A 1J5 • (204) 717-1079
+</div>
+
+<section class="section">
+  <h2>Photo Gallery</h2>
+  <div class="gallery-grid">
+    <a href="#img-0"><img src="images/1000000621.jpg" alt=""></a>
+<a href="#img-1"><img src="images/1000000625.jpg" alt=""></a>
+<a href="#img-2"><img src="images/2f0b3a57-24c4-42b4-bf1e-c396f1d08bd8.png" alt=""></a>
+<a href="#img-3"><img src="images/57031980-2213-4779-883b-dffcfdd9e06b.png" alt=""></a>
+<a href="#img-4"><img src="images/f2f99acb-6ee0-412c-a0d1-2ce0e585878b.png" alt=""></a>
+<a href="#img-5"><img src="images/1000000624.jpg" alt=""></a>
+<a href="#img-6"><img src="images/1000000638.jpg" alt=""></a>
+<a href="#img-7"><img src="images/8bb76362-de61-40f5-b0d3-f7c022171a3b.png" alt=""></a>
+<a href="#img-8"><img src="images/f26166a5-a726-4154-823a-3e6b328eb7aa.png" alt=""></a>
+<a href="#img-9"><img src="images/dc09c30c-fcc1-4e84-b51a-d1036a512b8b.png" alt=""></a>
+<a href="#img-10"><img src="images/1000000623.jpg" alt=""></a>
+<a href="#img-11"><img src="images/5433f5f3-639b-4b0e-bb61-15bfa72ce998.png" alt=""></a>
+<a href="#img-12"><img src="images/ab10e533-5b53-43ec-867f-4b84b2718bc6.png" alt=""></a>
+<a href="#img-13"><img src="images/ef2d80aa-579c-446a-85df-e9cb2ed64918.png" alt=""></a>
+<a href="#img-14"><img src="images/845c4220-6d89-4242-984b-e3138658df2e.png" alt=""></a>
+<a href="#img-15"><img src="images/Back Final.png" alt=""></a>
+<a href="#img-16"><img src="images/Front Final.png" alt=""></a>
+<a href="#img-17"><img src="images/Back Final (2).png" alt=""></a>
+<a href="#img-18"><img src="images/6d4a0d7f-0945-4e35-a212-08d3b3c95899.png" alt=""></a>
+<a href="#img-19"><img src="images/e71955b9-be2f-44fe-bc83-72a3abadfb32.png" alt=""></a>
+<a href="#img-20"><img src="images/9c319c56-4333-4d46-be73-41906f21fbcf.png" alt=""></a>
+<a href="#img-21"><img src="images/f1096e01-f7d4-4ead-a119-2f31d69f3ca5.png" alt=""></a>
+<a href="#img-22"><img src="images/af012059-9ec4-4168-beb1-a2d72acf701d.png" alt=""></a>
+  </div>
+</section>
+<div id="img-0" class="lightbox" onclick="this.style.display='none';"><img src="images/1000000621.jpg" alt=""></div>
+<div id="img-1" class="lightbox" onclick="this.style.display='none';"><img src="images/1000000625.jpg" alt=""></div>
+<div id="img-2" class="lightbox" onclick="this.style.display='none';"><img src="images/2f0b3a57-24c4-42b4-bf1e-c396f1d08bd8.png" alt=""></div>
+<div id="img-3" class="lightbox" onclick="this.style.display='none';"><img src="images/57031980-2213-4779-883b-dffcfdd9e06b.png" alt=""></div>
+<div id="img-4" class="lightbox" onclick="this.style.display='none';"><img src="images/f2f99acb-6ee0-412c-a0d1-2ce0e585878b.png" alt=""></div>
+<div id="img-5" class="lightbox" onclick="this.style.display='none';"><img src="images/1000000624.jpg" alt=""></div>
+<div id="img-6" class="lightbox" onclick="this.style.display='none';"><img src="images/1000000638.jpg" alt=""></div>
+<div id="img-7" class="lightbox" onclick="this.style.display='none';"><img src="images/8bb76362-de61-40f5-b0d3-f7c022171a3b.png" alt=""></div>
+<div id="img-8" class="lightbox" onclick="this.style.display='none';"><img src="images/f26166a5-a726-4154-823a-3e6b328eb7aa.png" alt=""></div>
+<div id="img-9" class="lightbox" onclick="this.style.display='none';"><img src="images/dc09c30c-fcc1-4e84-b51a-d1036a512b8b.png" alt=""></div>
+<div id="img-10" class="lightbox" onclick="this.style.display='none';"><img src="images/1000000623.jpg" alt=""></div>
+<div id="img-11" class="lightbox" onclick="this.style.display='none';"><img src="images/5433f5f3-639b-4b0e-bb61-15bfa72ce998.png" alt=""></div>
+<div id="img-12" class="lightbox" onclick="this.style.display='none';"><img src="images/ab10e533-5b53-43ec-867f-4b84b2718bc6.png" alt=""></div>
+<div id="img-13" class="lightbox" onclick="this.style.display='none';"><img src="images/ef2d80aa-579c-446a-85df-e9cb2ed64918.png" alt=""></div>
+<div id="img-14" class="lightbox" onclick="this.style.display='none';"><img src="images/845c4220-6d89-4242-984b-e3138658df2e.png" alt=""></div>
+<div id="img-15" class="lightbox" onclick="this.style.display='none';"><img src="images/Back Final.png" alt=""></div>
+<div id="img-16" class="lightbox" onclick="this.style.display='none';"><img src="images/Front Final.png" alt=""></div>
+<div id="img-17" class="lightbox" onclick="this.style.display='none';"><img src="images/Back Final (2).png" alt=""></div>
+<div id="img-18" class="lightbox" onclick="this.style.display='none';"><img src="images/6d4a0d7f-0945-4e35-a212-08d3b3c95899.png" alt=""></div>
+<div id="img-19" class="lightbox" onclick="this.style.display='none';"><img src="images/e71955b9-be2f-44fe-bc83-72a3abadfb32.png" alt=""></div>
+<div id="img-20" class="lightbox" onclick="this.style.display='none';"><img src="images/9c319c56-4333-4d46-be73-41906f21fbcf.png" alt=""></div>
+<div id="img-21" class="lightbox" onclick="this.style.display='none';"><img src="images/f1096e01-f7d4-4ead-a119-2f31d69f3ca5.png" alt=""></div>
+<div id="img-22" class="lightbox" onclick="this.style.display='none';"><img src="images/af012059-9ec4-4168-beb1-a2d72acf701d.png" alt=""></div>
+<footer>© 2025 KONGO'S Restaurant — All Rights Reserved</footer>
+<script>
+// show lightbox manually (instead of :target to support click-close)
+document.querySelectorAll('.gallery-grid img').forEach(function(img, idx){
+  img.addEventListener('click', function(){
+    var lb = document.getElementById('img-' + idx);
+    if(lb) lb.style.display='flex';
+  });
+});
+</script>
+
+<a href="https://nexgenfec.ca" target="_blank" class="book-online-btn">
+  Book<br>Online
+</a>
+
+</body>
+</html>
