@@ -74,19 +74,117 @@ button.submit-btn:hover{background:#e6e6e6;}
   box-shadow:0 0 18px rgba(255,255,255,0.8);
 }
 
-#qr-float {
+
+
+
+
+
+
+
+.floating-order-now {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
-    width: 110px;
-    height: 110px;
     background: #fff;
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
     z-index: 9999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: pointer;
 }
-#qr-float img { width:100%; height:100%; }
+
+
+
+.floating-top-center {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffffcc;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    z-index: 99999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.floating-top-center:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 14px rgba(0,0,0,0.6);
+}
+
+
+.floating-top-center {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffffcc;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    z-index: 99999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.floating-top-center:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 14px rgba(0,0,0,0.6);
+}
+
+
+
+.floating-top-center {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffffee;
+    color: #000;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    z-index: 99999;
+    box-shadow: 0 0 12px rgba(0,0,0,0.45);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.floating-top-center:hover {
+    transform: translateX(-50%) scale(1.06);
+    box-shadow: 0 0 16px rgba(0,0,0,0.55);
+}
+
+
+.floating-top-center {
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffffee;
+    color: #000;
+    padding: 10px 26px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    z-index: 999999 !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.55);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.floating-top-center:hover {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.65);
+}
 
 </style>
 </head>
@@ -101,16 +199,25 @@ button.submit-btn:hover{background:#e6e6e6;}
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="gallery.html">Gallery</a>
-    <a href="reservations.html">Reservations</a>
+    
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
+<span class="floating-top-center glf-button"
+      data-glf-cuid="60e09c0f-24e7-413b-847f-80498500f266"
+      data-glf-ruid="f347204b-b9ba-47e8-a2a3-b23e4ffa3030">
+      BOOK ONLINE
+</span>
+
+<script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async></script>
+
 <div class="info-bar">
 1608 Park Avenue (Beside NeXgen Family Entertainment) • Brandon, MB • R7A 1J5 • (204) 717-1079
 </div>
 
 
-<span class="floating-order-now glf-button" data-glf-cuid="60e09c0f-24e7-413b-847f-80498500f266" data-glf-ruid="f347204b-b9ba-47e8-a2a3-b23e4ffa3030">ORDER ONLINE</span>
+
 
 <section class="section">
 <h2>Contact Us</h2>
@@ -154,6 +261,9 @@ Phone: <b>204-717-1079</b>
 
 
 
-<div id="qr-float"><a href="https://www.foodbooking.com/api/fb/xe_j0_b" target="_blank"><img src="images/order_qr.png"></a></div>
+
+
+
+
 </body>
 </html>
