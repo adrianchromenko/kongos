@@ -221,30 +221,74 @@ button.submit-btn:hover{background:#e6e6e6;}
 
 <section class="section">
 <h2>Contact Us</h2>
-<form>
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
-<textarea rows="4" placeholder="Message"></textarea>
-<button class="submit-btn">Send</button>
+<form id="contactForm">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="phone" placeholder="Phone (optional)">
+<textarea name="message" rows="4" placeholder="Message" required></textarea>
 
 <label>Anti-Spam: What is 3 + 4?</label>
 <input type="text" name="captcha" required>
-<script>
-document.querySelector("form").addEventListener("submit", function(e){
-    var v = document.querySelector("input[name='captcha']").value.trim();
-    if(v !== "7"){
-        alert("Captcha incorrect.");
-        e.preventDefault();
-    }
-});
-</script>
-
+<button type="submit" class="submit-btn">Send</button>
 </form>
+
+<div id="formMessage" style="margin-top:15px;text-align:center;font-weight:bold;"></div>
+
 <p class="about-text" style="margin-top:20px;">
 Email: <b>nexgenfec@gmail.com</b><br>
 Phone: <b>204-717-1079</b>
 </p>
 </section>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    // Check captcha
+    var captcha = document.querySelector("input[name='captcha']").value.trim();
+    if(captcha !== "7"){
+        alert("Captcha incorrect. The answer is 7.");
+        return;
+    }
+
+    // Get form data
+    const formData = {
+        name: document.querySelector("input[name='name']").value,
+        email: document.querySelector("input[name='email']").value,
+        phone: document.querySelector("input[name='phone']").value,
+        message: document.querySelector("textarea[name='message']").value
+    };
+
+    // Show loading message
+    const messageDiv = document.getElementById("formMessage");
+    messageDiv.textContent = "Sending...";
+    messageDiv.style.color = "#ffcc00";
+
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            messageDiv.textContent = "Message sent successfully! We'll get back to you soon.";
+            messageDiv.style.color = "#00ff00";
+            document.getElementById("contactForm").reset();
+        } else {
+            messageDiv.textContent = "Error: " + (result.error || "Failed to send message");
+            messageDiv.style.color = "#ff0000";
+        }
+    } catch (error) {
+        messageDiv.textContent = "Error: Failed to send message. Please try again.";
+        messageDiv.style.color = "#ff0000";
+    }
+});
+</script>
 <footer>© 2025 KONGO'S Restaurant — All Rights Reserved</footer>
 
 <div class="hours-floating-box">
